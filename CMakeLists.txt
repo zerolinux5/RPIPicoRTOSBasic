@@ -18,5 +18,5 @@ add_compile_options(-Wall
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
-add_subdirectory(lib/freertos)
+add_subdirectory(lib/freertos/FreeRTOS-Kernel/portable/ThirdParty/GCC/RP2040 FreeRTOS-Kernel)
 add_subdirectory(src)

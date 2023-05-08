@@ -8,7 +8,7 @@
 
 void led_task(void *pvParameters) {
     const uint LED_PIN = CYW43_WL_GPIO_LED_PIN;
-    const uint delay = 50;
+    const uint delay = 1000;
     while (1) {
         cyw43_arch_gpio_put(LED_PIN, 1);
         vTaskDelay(delay);

@@ -4,6 +4,7 @@
 
 // General
 #include <stdio.h>
+#include <memory>
 
 // Pico
 #include "pico/stdlib.h"
@@ -11,7 +12,8 @@
 
 // User made
 #include "tasks/led_task.hpp"
-
+#include "tasks/motor_task.hpp"
+#include "classes/motor.hpp"
 
 int main() {
     stdio_init_all();
@@ -21,7 +23,10 @@ int main() {
     }
 
     xTaskCreate(led_task, "LED Task", 256, NULL, 1, NULL);
+    xTaskCreate(motor_task, "Motor Task", 256, NULL, 1, NULL);
     vTaskStartScheduler();
 
     while(1){};
 }
+
+// Notes:
