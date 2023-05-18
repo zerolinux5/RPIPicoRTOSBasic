@@ -8,22 +8,25 @@
 
 // User
 #include "motor_task.hpp"
-#include "classes/motor.hpp"
+#include "classes/l298n.hpp"
+#include "classes/motordirection.hpp"
 
 
 void motor_task(void *pvParameters) {
-    std::unique_ptr<Motor> m1 = std::make_unique<Motor>(3, 2, 4, 500);
-    std::unique_ptr<Motor> m2 = std::make_unique<Motor>(8, 7, 6, 500);
+    int ena = 4;
+    int int1 = 3;
+    int int2 = 2;
+    int enb = 6;
+    int int3 = 8;
+    int int4 = 7;
+    std::unique_ptr<L298n> motors = std::make_unique<L298n>(ena, int1, int2, enb, int3, int4, 500);
     const uint32_t delay = 1000;
     // Needed to keep looping
     while (1) {
-        m1->setDirection(MotorDirection::FORWARD);
-        m1->setSpeed(50);
-        m2->setDirection(MotorDirection::FORWARD);
-        m2->setSpeed(50);
+        motors->setDirection(MotorDirection::FORWARD);
+        motors->setSpeed(50);
         vTaskDelay(delay);
-        m1->stop();
-        m2->stop();
+        motors->stop();
         vTaskDelay(delay);
     }
 }

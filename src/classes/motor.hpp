@@ -1,16 +1,11 @@
 #pragma once
 
 #include "pwm.hpp"
-
-enum MotorDirection {
-    FORWARD,
-    BACKWARD,
-    STOPPED,
-};
+#include "motordirection.hpp"
 
 class Motor {
         int chan;
-        int direction;
+        MotorDirection direction;
         int frequency;
         int pin1;
         int pin2;
